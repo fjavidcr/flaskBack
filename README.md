@@ -2,7 +2,7 @@
 
 ## Working with virtualenv
 
-### Install
+### Install
 ```
 pip install virtualenv
 virtualenv venv

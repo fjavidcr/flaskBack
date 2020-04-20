@@ -2,18 +2,18 @@
 
 ## Working with virtualenv
 
-Install
+### Install
 ```
 pip install virtualenv
 virtualenv venv
 ```
 
-Activate:
+### Activate:
 ``` 
  source venv/bin/activate
 ```
 
-Deactivate:
+### Deactivate:
 ```
 deactivate
 ```

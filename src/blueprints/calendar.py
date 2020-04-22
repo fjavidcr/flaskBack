@@ -6,5 +6,5 @@ calendar_bp = Blueprint('calendar', __name__)
 
 @calendar_bp.route('/getevents', methods=['GET'])
 def usersHandler():
-    calendar.getMealEvents()
+    calendar.getMealEvents(7)
     return jsonify({"response": "Events printed on console"})

@@ -12,20 +12,20 @@ __CALENDAR_ID = config['CALENDAR']['ID']
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
+# service
+
 calendar = Calendar()
-__CREDENTIALS = calendar.getCredentials()
+__SERVICE = build('calendar', 'v3', credentials=calendar.getCredentials())
 
 
-def getMealEvents():
+def getMealEvents(max=10):
 
-    service = build('calendar', 'v3', credentials=__CREDENTIALS)
-
-    # Call the Calendar API
     now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-    print('Getting the upcoming 10 events')
-    events_result = service.events().list(calendarId=__CALENDAR_ID, timeMin=now,
-                                          maxResults=10, singleEvents=True,
-                                          orderBy='startTime').execute()
+
+    print('Getting the upcoming {} events'.format(max))
+    events_result = __SERVICE.events().list(calendarId=__CALENDAR_ID, timeMin=now,
+                                            maxResults=max, singleEvents=True,
+                                            orderBy='startTime').execute()
     events = events_result.get('items', [])
 
     if not events:

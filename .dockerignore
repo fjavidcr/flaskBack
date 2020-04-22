@@ -5,3 +5,6 @@ venv/
 *.md
 requeriments-dev.txt
 Dockerfile
+client_secret/
+config/
+*.pickle

@@ -1,15 +1,29 @@
-from flask import Flask, jsonify
+import os.path
+from flask import Flask, send_from_directory
+from src.blueprints import calendar, default
+import configparser
+
+# CONFIG
+
+config = configparser.ConfigParser()
+config.read('config/config.ini')
+
+__NETWORK_PORT = config['APP']['PORT']
+__NETWORK_HOST = config['APP']['HOST']
+__DEBUG = config['APP']['DEBUG']
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def ping():
-    return jsonify({"response": "Hello World from flask in docker"})
+app.register_blueprint(default.default_bp)
+app.register_blueprint(calendar.calendar_bp, url_prefix='/v1/')
 
-@app.route('/users', methods=['GET'])
-def usersHandler():
-    return jsonify({"response": "Hello World from users"})
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 
 if __name__ == '__main__':
-    print('Flask API running on port 8888!')
-    app.run(host="0.0.0.0", port="8888", debug=True)
+    print('Flask API running on port {0}!'.format(__NETWORK_PORT))
+    app.run(host=__NETWORK_HOST, port=__NETWORK_PORT, debug=__DEBUG)

@@ -4,26 +4,26 @@
 
 ### Install
 
-```shell
+```bash
 pip install virtualenv
 virtualenv venv
 ```
 
 ### Activate:
 
-```shell
+```bash
  source venv/bin/activate
 ```
 
 ### Deactivate:
 
-```shell
+```bash
 deactivate
 ```
 
 ### Export PYTHONPATH
 
-```shell
+```bash
 export PYTHONPATH="$PWD"
 ```
 
@@ -31,13 +31,13 @@ export PYTHONPATH="$PWD"
 
 ### To build docker image
 
-```shell
+```bash
 docker build -t flaskback .
 ```
 
 ### To create the container using the image
 
-```shell
+```bash
 docker run -it -p 8888:8888 -v $(pwd)/src:/app/src --name flaskback flaskback
 docker run -it -p 8888:8888 --name flaskback flaskback
 ```

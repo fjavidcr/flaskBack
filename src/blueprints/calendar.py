@@ -6,5 +6,10 @@ calendar_bp = Blueprint('calendar', __name__)
 
 @calendar_bp.route('/getevents', methods=['GET'])
 def usersHandler():
-    calendar.getMealEvents(7)
-    return jsonify({"response": "Events printed on console"})
+    responseData = []
+    try:
+        maxEvents = request.args.get('max')
+        responseData = calendar.getMealEvents(max=maxEvents)
+    except:
+        responseData = calendar.getMealEvents()
+    return jsonify({"response": responseData})

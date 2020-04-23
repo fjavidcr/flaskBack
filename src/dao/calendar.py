@@ -18,18 +18,19 @@ calendar = Calendar()
 __SERVICE = build('calendar', 'v3', credentials=calendar.getCredentials())
 
 
-def getMealEvents(max=10):
+def getMealEvents(max='10'):
 
     now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
 
-    print('Getting the upcoming {} events'.format(max))
+    print('Getting the upcoming {} meal events'.format(max))
     events_result = __SERVICE.events().list(calendarId=__CALENDAR_ID, timeMin=now,
                                             maxResults=max, singleEvents=True,
                                             orderBy='startTime').execute()
     events = events_result.get('items', [])
 
     if not events:
-        print('No upcoming events found.')
-    for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        print(start, event['summary'])
+        return 404
+    # for event in events:
+    #     start = event['start'].get('dateTime', event['start'].get('date'))
+    #     print(start, event['summary'])
+    return events

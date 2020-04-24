@@ -39,7 +39,7 @@ def getTasksFromList(max='10'):
         print('No task lists found.')
         return 404
     else:
-        print('Task lists:')
+        print('Tasks list:')
         for item in items:
             print(u'{0} ({1})'.format(item['title'], item['id']))
 

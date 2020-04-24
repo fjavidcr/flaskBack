@@ -1,4 +1,5 @@
 # to run this script first -> chmod u+x run.sh
+clear
 echo '----------------------'
 echo '+ Activate VIRTUAL ENV'
 source venv/bin/activate

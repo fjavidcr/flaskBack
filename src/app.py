@@ -1,6 +1,6 @@
 import os.path
 from flask import Flask, send_from_directory
-from src.blueprints import calendar, default
+from src.blueprints import calendar, default, task
 import configparser
 
 # CONFIG
@@ -13,7 +13,8 @@ __DEBUG = config['APP']['DEBUG']
 
 app = Flask(__name__)
 app.register_blueprint(default.default_bp)
-app.register_blueprint(calendar.calendar_bp, url_prefix='/v1/')
+app.register_blueprint(calendar.calendar_bp, url_prefix='/v1/calendar/')
+app.register_blueprint(task.task_bp, url_prefix='/v1/task/')
 
 
 @app.route('/favicon.ico')

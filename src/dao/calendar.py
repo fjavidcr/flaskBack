@@ -1,7 +1,7 @@
 from __future__ import print_function
 from googleapiclient.discovery import build
 import datetime
-from src.handlers.calendar import Calendar
+from src.handlers import googleApi
 import configparser
 
 # CONFIG
@@ -9,13 +9,8 @@ config = configparser.ConfigParser()
 config.read('config/config.ini')
 __CALENDAR_ID = config['CALENDAR']['ID']
 
-# If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-
 # service
-
-calendar = Calendar()
-__SERVICE = build('calendar', 'v3', credentials=calendar.getCredentials())
+__SERVICE = googleApi.getService(apiName='calendar', apiVersion='v3')
 
 
 def getMealEvents(max='10'):

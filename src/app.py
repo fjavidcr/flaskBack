@@ -24,4 +24,5 @@ def favicon():
 
 if __name__ == '__main__':
     print('Flask API running on port {0}!'.format(__NETWORK_PORT))
-    app.run(host=__NETWORK_HOST, port=__NETWORK_PORT, debug=__DEBUG)
+    app.run(host=__NETWORK_HOST, port=__NETWORK_PORT,
+            ssl_context='adhoc', debug=__DEBUG)

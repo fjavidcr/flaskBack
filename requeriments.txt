@@ -33,6 +33,7 @@ cffi==1.14.0
 cryptography==2.9.2
 pycparser==2.20
 pyopenssl==19.1.0
+Flask-SSLify==0.1.5
 
 ## The following requirements were added by pip freeze:
 astroid==2.3.3

@@ -1,5 +1,6 @@
 import os.path
 from flask import Flask, send_from_directory
+from flask_sslify import SSLify
 from src.blueprints import calendar, default, task
 import configparser
 
@@ -12,6 +13,8 @@ __NETWORK_HOST = config['APP']['HOST']
 __DEBUG = config['APP']['DEBUG']
 
 app = Flask(__name__)
+sslify = SSLify(app, subdomains=True)
+
 app.register_blueprint(default.default_bp)
 app.register_blueprint(calendar.calendar_bp, url_prefix='/api/v1/calendar/')
 app.register_blueprint(task.task_bp, url_prefix='/api/v1/task/')

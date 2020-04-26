@@ -32,13 +32,13 @@ export PYTHONPATH="$PWD"
 ### To build docker image
 
 ```bash
-docker build -t flaskback .
+docker build -t flaskback:1.0 .
 ```
 
 ### To create the container using the image
 
 ```bash
-docker run -it -p 8888:8888 -v $(pwd)/src:/app/src --name flaskback flaskback
+docker run -it -p 8888:8888 -v $(pwd)/src:/app/src --name flaskback flaskback:1.0
 docker run -it -p 8888:8888 --name flaskback flaskback
 ```
 

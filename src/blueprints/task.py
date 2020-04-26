@@ -1,40 +1,44 @@
 from flask import Flask, jsonify, Blueprint, request
-from src.dao import task
+from src.dao.task import Task
 
 task_bp = Blueprint('task', __name__)
+
+task_dao = None
 
 
 @task_bp.route('/lists', methods=['GET'])
 def lists():
-    responseData = []
+    global task_dao
+    if not task_dao:
+        task_dao = Task()
 
-    try:
-        max = request.args.get('max')
-        print('max tasks: {}'.format(max))
-    except:
-        print('max tasks: default')
+    responseData = []
+    max = request.args.get('max')
 
     if max:
-        responseData = task.getTasksLists(max=max)
+        print('max tasks: {}'.format(max))
+        responseData = task_dao.getTasksLists(max=max)
     else:
-        responseData = task.getTasksLists()
+        print('max tasks: default')
+        responseData = task_dao.getTasksLists()
 
     return jsonify(responseData)
 
 
 @task_bp.route('/mytasks/list', methods=['GET'])
 def mytasks_list():
-    responseData = []
+    global task_dao
+    if not task_dao:
+        task_dao = Task()
 
-    try:
-        max = request.args.get('max')
-        print('max tasks: {}'.format(max))
-    except:
-        print('max tasks: default')
+    responseData = []
+    max = request.args.get('max')
 
     if max:
-        responseData = task.getTasksFromList(max=max)
+        print('max tasks: {}'.format(max))
+        responseData = task_dao.getTasksFromList(max=max)
     else:
-        responseData = task.getTasksFromList()
+        print('max tasks: default')
+        responseData = task_dao.getTasksFromList()
 
     return jsonify(responseData)

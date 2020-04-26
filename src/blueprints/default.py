@@ -10,4 +10,4 @@ def home():
 
 @default_bp.route('/ping', methods=['GET'])
 def ping():
-    return jsonify()
+    return jsonify({"response": "Hello!"})

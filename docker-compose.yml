@@ -7,10 +7,16 @@ services:
     container_name: flaskback
     environment:
       - PYTHONPATH=/app
+      - SPOTIPY_CLIENT_ID=$SPOTIPY_CLIENT_ID
+      - SPOTIPY_CLIENT_SECRET=$SPOTIPY_CLIENT_SECRET
+      - SPOTIPY_REDIRECT_URI=$SPOTIPY_REDIRECT_URI
     ports:
       - "4433:4433"
     volumes:
       - ./src:/app/src #optional
       - ./client_secret:/app/client_secret
       - ./config:/app/config
+      - ./scripts/run_docker.sh:/app/scripts/run_docker.sh
+    # command:
+    #   - scripts/run_docker.sh
     # restart: unless-stopped

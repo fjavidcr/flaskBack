@@ -129,6 +129,7 @@ dmypy.json
 #secrets
 client_secret/
 *.pickle
+.cache-1116296944
 
 #configs
 config/

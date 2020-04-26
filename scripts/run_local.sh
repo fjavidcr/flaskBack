@@ -1,3 +1,4 @@
+#!/bin/bash
 # to run this script first -> chmod u+x run.sh
 clear
 echo '----------------------'

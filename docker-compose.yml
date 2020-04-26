@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  ###########
+  flaskback:
+    image: flaskback:1.0
+    container_name: flaskback
+    environment:
+      - PYTHONPATH=/app
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./src:/app/src #optional
+      - ./client_secret:/app/client_secret
+      - ./config:/app/config
+    # restart: unless-stopped

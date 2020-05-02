@@ -48,3 +48,9 @@ Flask-SSLify==0.1.5
 
 # SPOTIFY
 spotipy==2.11.2
+
+# IMDB
+IMDbPY==6.8
+lxml==4.5.0
+SQLAlchemy==1.3.16
+xmltodict==0.12.0

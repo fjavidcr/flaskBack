@@ -2,6 +2,8 @@
 # to run this script first -> chmod u+x docker-compose.sh
 
 echo '----------------------'
+echo '+ Activate VIRTUAL ENV'
+source venv/bin/activate
 
 echo '+ Exports for env'
 

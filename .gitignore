@@ -136,3 +136,6 @@ config/
 
 #scripts
 scripts/
+
+#mac 
+.DS_Store

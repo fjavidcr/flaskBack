@@ -133,3 +133,6 @@ client_secret/
 
 #configs
 config/
+
+#scripts
+scripts/
